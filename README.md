@@ -12,3 +12,8 @@ Then, run the Docker container in the interactive mode:
 ```shell
 docker run -it -p 8888:8888 e-dzia/detectron2:latest /bin/bash
 ```
+
+Inside the Docker container, you can run the notebook server:
+```shell
+jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+```
