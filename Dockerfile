@@ -15,10 +15,11 @@ RUN pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=
 # Detectron2 - CPU copy
 RUN python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.10/index.html
 
-WORKDIR /app
+WORKDIR /car_detection
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY car_detection/ ./
+ENV PYTHONPATH "${PYTHONPATH}:/car_detection"
 
-#ENTRYPOINT ["python", "/app/web_api.py"]
+ENTRYPOINT ["python", "/car_detection/app/object_detection.py"]
