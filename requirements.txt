@@ -6,6 +6,7 @@ identify==2.5.12
 jupyter==1.0.0
 nodeenv==1.7.0
 opencv-python==4.7.0.68
+parameterized==0.8.1
 platformdirs==2.6.2
 pre-commit==2.21.0
 PyYAML==6.0

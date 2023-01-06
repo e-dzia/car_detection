@@ -10,20 +10,18 @@ docker build --rm . -t e-dzia/detectron2:latest
 ```
 
 ## Notebook server
-To run the notebook server, Dockerfile must be run without the last line:
-```
-ENTRYPOINT ["python", "/car_detection/app/object_detection.py"]
-```
 
-Then, run the Docker container in the interactive mode:
+To run the notebook server run the Docker container with changed entrypoint:
 ```shell
-docker run -it -p 8888:8888 e-dzia/detectron2:latest /bin/bash
+docker run --entrypoint /bin/bash -it -p 8888:8888 e-dzia/detectron2:latest
 ```
 
 Inside the Docker container, you can run the notebook server:
 ```shell
 jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
 ```
+
+The notebook server will be available at `http://localhost:8888/`.
 
 ## Gradio app
 
@@ -37,3 +35,10 @@ It allows choosing from several models and drag&dropping images for prediction.
 The result is the image with bounding boxes drawn on top of it and an information about the number of found cars.
 
 ![Gradio demo app](images/gradio.gif)
+
+# Tests
+
+Run tests:
+```shell
+docker run --entrypoint "python" e-dzia/detectron2:latest tests/test_detectron2_model.py
+```

@@ -20,6 +20,7 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY car_detection/ ./
+COPY tests/ ./tests/
 ENV PYTHONPATH "${PYTHONPATH}:/car_detection"
 
 ENTRYPOINT ["python", "/car_detection/app/object_detection.py"]
