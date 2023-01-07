@@ -31,6 +31,18 @@ The result is the image with bounding boxes drawn on top of it and an informatio
 
 ![Gradio demo app](images/gradio.gif)
 
+### Share your app
+
+To share your app, you need to specify login and password during Docker run:
+```shell
+docker run -it -p 7860:7860 e-dzia/detectron2:latest --share --login mylogin --passwd mypasswd1234
+```
+
+The defaults are admin:admin.
+
+In the console, you would see the link to share the app: "Running on public URL".
+You can share it and all computations will be performed on your machine.
+
 # Tests
 
 Run tests:

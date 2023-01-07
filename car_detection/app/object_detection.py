@@ -1,5 +1,6 @@
 """Gradio app demo."""
 from typing import Tuple
+import argparse
 
 import numpy as np
 import gradio as gr
@@ -18,6 +19,12 @@ def detect(image: np.ndarray, config_name: str) -> Tuple[np.ndarray, str]:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--share", action="store_true")
+    parser.add_argument("--login", type=str, default="admin")
+    parser.add_argument("--passwd", type=str, default="admin")
+    args = parser.parse_args()
+
     demo = gr.Interface(
         fn=detect,
         inputs=[
@@ -57,4 +64,9 @@ if __name__ == "__main__":
         outputs=["image", "text"],
     )
 
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    if args.share:
+        auth = (args.login, args.passwd)
+    else:
+        auth = None
+
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=args.share, auth=auth)
