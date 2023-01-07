@@ -1,6 +1,20 @@
 """Gradio app demo."""
+from typing import Tuple
+
+import numpy as np
 import gradio as gr
-from model.detectron2_model import detect
+from model.detectron2_model import Detectron2Model
+
+
+def detect(image: np.ndarray, config_name: str) -> Tuple[np.ndarray, str]:
+    """Detect objects on image.
+
+    :param image: Image.
+    :param config_name: Detectron2 model config from Model ZOO, e.g. "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"
+    :return: Image with detections, string with information about number of found objects.
+    """
+    model = Detectron2Model(config_name)
+    return model.detect(image, ["car"])
 
 
 if __name__ == "__main__":

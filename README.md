@@ -13,12 +13,7 @@ docker build --rm . -t e-dzia/detectron2:latest
 
 To run the notebook server run the Docker container with changed entrypoint:
 ```shell
-docker run --entrypoint /bin/bash -it -p 8888:8888 e-dzia/detectron2:latest
-```
-
-Inside the Docker container, you can run the notebook server:
-```shell
-jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+docker run --entrypoint jupyter -it -p 8888:8888 e-dzia/detectron2:latest notebook --ip 0.0.0.0 --no-browser --allow-root
 ```
 
 The notebook server will be available at `http://localhost:8888/`.
