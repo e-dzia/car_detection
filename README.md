@@ -22,7 +22,7 @@ The notebook server will be available at `http://localhost:8888/`.
 
 To run the demo application with Detectron2 model usage, the Docker container must be run with additional arguments:
 ```shell
-docker run -it -p 7860:7860 e-dzia/detectron2:latest /bin/bash
+docker run -it -p 7860:7860 e-dzia/detectron2:latest
 ```
 
 The app will open on the `http://localhost:7860/`.
